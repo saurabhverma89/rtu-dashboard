@@ -2,8 +2,14 @@ const alarm_on_text = "Active"
 const alarm_off_text = "Deactive"
 
 function load_status_fanGroup(){
-    const signal = parseInt(document.getElementById("signal_status_fan_group").value)
-    
+    const signal_fg = parseInt(document.getElementById("signal_status_fan_group").value)
+    const signal_fan_1 = parseInt(document.getElementById("signal_alarm_fan_1").value)
+    const signal_fan_2 = parseInt(document.getElementById("signal_alarm_fan_2").value)
+    const signal_fan_3 = parseInt(document.getElementById("signal_alarm_fan_3").value)
+    const signal_fan_4 = parseInt(document.getElementById("signal_alarm_fan_4").value)
+    const signal_fan_5 = parseInt(document.getElementById("signal_alarm_fan_5").value)
+    const signal_fan_6 = parseInt(document.getElementById("signal_alarm_fan_6").value)
+
     const f1 = document.getElementById("fan-1");
     const f2 = document.getElementById("fan-2");
     const f3 = document.getElementById("fan-3");
@@ -11,7 +17,7 @@ function load_status_fanGroup(){
     const f5 = document.getElementById("fan-5");
     const f6 = document.getElementById("fan-6");
     
-    if(signal > 0){
+    if(signal_fg > 0){
         f1.classList.remove("inactive")
         f2.classList.remove("inactive")
         f3.classList.remove("inactive")
@@ -20,27 +26,27 @@ function load_status_fanGroup(){
         f6.classList.remove("inactive")
     }
 
-    if(signal == 1){
-        f1.classList.add("spin")
-        f2.classList.add("spin")
-        f3.classList.add("spin")
+    if(signal_fg == 1){
+        if(signal_fan_1 == 0) f1.classList.add("spin")
+        if(signal_fan_2 == 0) f2.classList.add("spin")
+        if(signal_fan_3 == 0) f3.classList.add("spin")
         f4.classList.remove("spin")
         f5.classList.remove("spin")
         f6.classList.remove("spin")
-    }else if(signal == 2){
+    }else if(signal_fg == 2){
         f1.classList.remove("spin")
         f2.classList.remove("spin")
         f3.classList.remove("spin")
-        f4.classList.add("spin")
-        f5.classList.add("spin")
+        if(signal_fan_4 == 0) f4.classList.add("spin")
+        if(signal_fan_5 == 0) f5.classList.add("spin")
         f6.classList.remove("spin")
-    }else if(signal == 3){
+    }else if(signal_fg == 3){
         f1.classList.remove("spin")
         f2.classList.remove("spin")
         f3.classList.remove("spin")
         f4.classList.remove("spin")
         f5.classList.remove("spin")
-        f6.classList.add("spin")
+        if(signal_fan_6 == 0) f6.classList.add("spin")
     }
 }
 
@@ -123,11 +129,15 @@ function load_alarm_fan_fail(){
 
     if(signal_fan_1 == 1 || signal_fan_2 == 1 || signal_fan_3 == 1 || signal_fan_4 == 1 || signal_fan_5 == 1 || signal_fan_6 == 1){
         fans_fail_icon.classList.add("bad")
-        fans_fail_text.innerHTML = "Fan(s) Fail"
-        fans_fail_count.innerHTML = fans.join(",")
+        fans_fail_text.innerHTML = "Fan Fail (" + (fans.length == 6 ? "all" : fans.length) + ")"
+        if(fans.length == 6){
+            fans_fail_count.innerHTML = ""
+        }else{
+            fans_fail_count.innerHTML = "Fan " + fans.join(",")
+        }
     }else if(signal_fan_1 == 0 && signal_fan_2 == 0 && signal_fan_3 == 0 && signal_fan_4 == 0 && signal_fan_5 == 0 && signal_fan_6 == 0){
         fans_fail_icon.classList.remove("bad")
-        fans_fail_text.innerHTML = "Fan(s) OK"
+        fans_fail_text.innerHTML = "Fan OK (all)"
         fans_fail_count.innerHTML = ""
     }else{
         fans_fail_icon.classList.remove("bad")
