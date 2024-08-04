@@ -121,7 +121,6 @@ function load_alarm_fan_fail(){
         if(signal_fan_group == 3) f6.classList.add("spin")
     }
 
-    console.log(signal_fan_1)
     if(signal_fan_1 == 1 || signal_fan_2 == 1 || signal_fan_3 == 1 || signal_fan_4 == 1 || signal_fan_5 == 1 || signal_fan_6 == 1){
         fans_fail_icon.classList.add("bad")
         fans_fail_text.innerHTML = "Fan(s) Fail"
@@ -340,7 +339,6 @@ var init = function(){
 
 //testing
 function ToggleAlarm(alarmName, value){
-    console.log(value.target.checked)
     document.getElementById(alarmName).value = value.target.checked ? 1: 0
     load_alarms_all()
 }
