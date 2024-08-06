@@ -1,134 +1,183 @@
-const alarm_on_text = "Active"
-const alarm_off_text = "Deactive"
+const text_active = "Active"
+const text_deactive = "Deactive"
+const text_na = "-"
+
+const css_inactive = "inactive"
+const css_bad = "bad"
+const css_spin = "spin"
+const css_good = "good"
+const css_average = "average"
+
+const id_signal_status_fan_group_1 = "signal_status_fan_group_1"
+const id_signal_status_fan_group_2 = "signal_status_fan_group_2"
+const id_signal_status_fan_group_3 = "signal_status_fan_group_3"
+const id_signal_alarm_fan_1 = "signal_alarm_fan_1"
+const id_signal_alarm_fan_2 = "signal_alarm_fan_2"
+const id_signal_alarm_fan_3 = "signal_alarm_fan_3"
+const id_signal_alarm_fan_4 = "signal_alarm_fan_4"
+const id_signal_alarm_fan_5 = "signal_alarm_fan_5"
+const id_signal_alarm_fan_6 = "signal_alarm_fan_6"
+const id_fan_1 = "fan_1"
+const id_fan_2 = "fan_2"
+const id_fan_3 = "fan_3"
+const id_fan_4 = "fan_4"
+const id_fan_5 = "fan_5"
+const id_fan_6 = "fan_6"
 
 function load_status_fanGroup(){
-    const signal_fg = parseInt(document.getElementById("signal_status_fan_group").value)
-    const signal_fan_1 = parseInt(document.getElementById("signal_alarm_fan_1").value)
-    const signal_fan_2 = parseInt(document.getElementById("signal_alarm_fan_2").value)
-    const signal_fan_3 = parseInt(document.getElementById("signal_alarm_fan_3").value)
-    const signal_fan_4 = parseInt(document.getElementById("signal_alarm_fan_4").value)
-    const signal_fan_5 = parseInt(document.getElementById("signal_alarm_fan_5").value)
-    const signal_fan_6 = parseInt(document.getElementById("signal_alarm_fan_6").value)
+    const signal_fg_1 = parseInt(document.getElementById(id_signal_status_fan_group_1).value)
+    const signal_fg_2 = parseInt(document.getElementById(id_signal_status_fan_group_2).value)
+    const signal_fg_3 = parseInt(document.getElementById(id_signal_status_fan_group_3).value)
+    const signal_fan_1 = parseInt(document.getElementById(id_signal_alarm_fan_1).value)
+    const signal_fan_2 = parseInt(document.getElementById(id_signal_alarm_fan_2).value)
+    const signal_fan_3 = parseInt(document.getElementById(id_signal_alarm_fan_3).value)
+    const signal_fan_4 = parseInt(document.getElementById(id_signal_alarm_fan_4).value)
+    const signal_fan_5 = parseInt(document.getElementById(id_signal_alarm_fan_5).value)
+    const signal_fan_6 = parseInt(document.getElementById(id_signal_alarm_fan_6).value)
 
-    const f1 = document.getElementById("fan-1");
-    const f2 = document.getElementById("fan-2");
-    const f3 = document.getElementById("fan-3");
-    const f4 = document.getElementById("fan-4");
-    const f5 = document.getElementById("fan-5");
-    const f6 = document.getElementById("fan-6");
+    const f1 = document.getElementById(id_fan_1);
+    const f2 = document.getElementById(id_fan_2);
+    const f3 = document.getElementById(id_fan_3);
+    const f4 = document.getElementById(id_fan_4);
+    const f5 = document.getElementById(id_fan_5);
+    const f6 = document.getElementById(id_fan_6);
     
-    if(signal_fg > 0){
-        f1.classList.remove("inactive")
-        f2.classList.remove("inactive")
-        f3.classList.remove("inactive")
-        f4.classList.remove("inactive")
-        f5.classList.remove("inactive")
-        f6.classList.remove("inactive")
+    const fg1 = document.getElementById("status_fan_group_1")
+    const fg2 = document.getElementById("status_fan_group_2")
+    const fg3 = document.getElementById("status_fan_group_3")
+    
+    if(signal_fg_1 == 0 || signal_fg_1 == 1){
+        f1.classList.remove(css_inactive)
+        f2.classList.remove(css_inactive)
+        f3.classList.remove(css_inactive)
+        
+        if(signal_fg_1 == 1){ // 1 - active
+            fg1.innerHTML = text_active
+            if(signal_fan_1 == 0) f1.classList.add(css_spin)
+            if(signal_fan_2 == 0) f2.classList.add(css_spin)
+            if(signal_fan_3 == 0) f3.classList.add(css_spin)
+        }else{ // 0 - deactive
+            fg1.innerHTML = text_deactive
+            f1.classList.remove(css_spin)
+            f2.classList.remove(css_spin)
+            f3.classList.remove(css_spin)
+        }
+    }else{
+        fg1.innerHTML = text_na
+        f1.classList.add(css_inactive)
+        f2.classList.add(css_inactive)
+        f3.classList.add(css_inactive)
     }
 
-    if(signal_fg == 1){
-        if(signal_fan_1 == 0) f1.classList.add("spin")
-        if(signal_fan_2 == 0) f2.classList.add("spin")
-        if(signal_fan_3 == 0) f3.classList.add("spin")
-        f4.classList.remove("spin")
-        f5.classList.remove("spin")
-        f6.classList.remove("spin")
-    }else if(signal_fg == 2){
-        f1.classList.remove("spin")
-        f2.classList.remove("spin")
-        f3.classList.remove("spin")
-        if(signal_fan_4 == 0) f4.classList.add("spin")
-        if(signal_fan_5 == 0) f5.classList.add("spin")
-        f6.classList.remove("spin")
-    }else if(signal_fg == 3){
-        f1.classList.remove("spin")
-        f2.classList.remove("spin")
-        f3.classList.remove("spin")
-        f4.classList.remove("spin")
-        f5.classList.remove("spin")
-        if(signal_fan_6 == 0) f6.classList.add("spin")
+    if(signal_fg_2 == 0 || signal_fg_2 == 1){
+        f4.classList.remove(css_inactive)
+        f5.classList.remove(css_inactive)
+
+        if(signal_fg_2 == 1){
+            fg2.innerHTML = text_active
+            if(signal_fan_4 == 0) f4.classList.add(css_spin)
+            if(signal_fan_5 == 0) f5.classList.add(css_spin)
+        }else{
+            fg2.innerHTML = text_deactive
+            f4.classList.remove(css_spin)
+            f5.classList.remove(css_spin)
+        }
+    }else{
+        fg2.innerHTML = text_na
+        f4.classList.add(css_inactive)
+        f5.classList.add(css_inactive)
+    }
+
+    if(signal_fg_3 == 0 || signal_fg_3 == 1){
+        f6.classList.remove(css_inactive)
+
+        if(signal_fg_3 == 1){
+            fg3.innerHTML = text_active
+            if(signal_fan_6 == 0) f6.classList.add(css_spin)
+        }else{
+            fg3.innerHTML = text_deactive
+            f6.classList.remove(css_spin)
+        }
+    }else{
+        fg3.innerHTML = text_na
+        f6.classList.add(css_inactive)
     }
 }
 
 function load_alarm_fan_fail(){
-    const signal_fan_1 = parseInt(document.getElementById("signal_alarm_fan_1").value)
-    const signal_fan_2 = parseInt(document.getElementById("signal_alarm_fan_2").value)
-    const signal_fan_3 = parseInt(document.getElementById("signal_alarm_fan_3").value)
-    const signal_fan_4 = parseInt(document.getElementById("signal_alarm_fan_4").value)
-    const signal_fan_5 = parseInt(document.getElementById("signal_alarm_fan_5").value)
-    const signal_fan_6 = parseInt(document.getElementById("signal_alarm_fan_6").value)
+    const signal_fan_1 = parseInt(document.getElementById(id_signal_alarm_fan_1).value)
+    const signal_fan_2 = parseInt(document.getElementById(id_signal_alarm_fan_2).value)
+    const signal_fan_3 = parseInt(document.getElementById(id_signal_alarm_fan_3).value)
+    const signal_fan_4 = parseInt(document.getElementById(id_signal_alarm_fan_4).value)
+    const signal_fan_5 = parseInt(document.getElementById(id_signal_alarm_fan_5).value)
+    const signal_fan_6 = parseInt(document.getElementById(id_signal_alarm_fan_6).value)
 
-    const signal_fan_group = parseInt(document.getElementById("signal_status_fan_group").value)
+    const signal_fg_1 = parseInt(document.getElementById(id_signal_status_fan_group_1).value)
+    const signal_fg_2 = parseInt(document.getElementById(id_signal_status_fan_group_2).value)
+    const signal_fg_3 = parseInt(document.getElementById(id_signal_status_fan_group_3).value)
     
-    const f1 = document.getElementById("fan-1")
-    const f2 = document.getElementById("fan-2")
-    const f3 = document.getElementById("fan-3")
-    const f4 = document.getElementById("fan-4")
-    const f5 = document.getElementById("fan-5")
-    const f6 = document.getElementById("fan-6")
+    const f1 = document.getElementById(id_fan_1)
+    const f2 = document.getElementById(id_fan_2)
+    const f3 = document.getElementById(id_fan_3)
+    const f4 = document.getElementById(id_fan_4)
+    const f5 = document.getElementById(id_fan_5)
+    const f6 = document.getElementById(id_fan_6)
     const fans_fail_icon = document.getElementById("alarm-fans-fail")
     const fans_fail_text = document.getElementById("alarm-fans-fail-text")
     const fans_fail_count = document.getElementById("alarm-fans-fail-count")
     const fans = []
 
-    if(hasValue(signal_fan_1)) f1.classList.remove("inactive")
-    if(hasValue(signal_fan_2)) f2.classList.remove("inactive")
-    if(hasValue(signal_fan_3)) f3.classList.remove("inactive")
-    if(hasValue(signal_fan_4)) f4.classList.remove("inactive")
-    if(hasValue(signal_fan_5)) f5.classList.remove("inactive")
-    if(hasValue(signal_fan_6)) f6.classList.remove("inactive")
-
     if(signal_fan_1 == 1){
-        f1.classList.remove("spin")
-        f1.classList.add("bad")
+        f1.classList.remove(css_spin)
+        f1.classList.add(css_bad)
         fans.push(1)
-    }else{
-        f1.classList.remove("bad")
-        if(signal_fan_group == 1) f1.classList.add("spin")
+    }else if(signal_fan_1 == 0){
+        f1.classList.remove(css_bad)
+        if(signal_fg_1 == 1) f1.classList.add(css_spin)
     }
     if(signal_fan_2 == 1){
-        f2.classList.remove("spin")
-        f2.classList.add("bad")
+        f2.classList.remove(css_spin)
+        f2.classList.add(css_bad)
         fans.push(2)
-    }else{
-        f2.classList.remove("bad")
-        if(signal_fan_group == 1) f2.classList.add("spin")
+    }else if(signal_fan_2 == 0){
+        f2.classList.remove(css_bad)
+        if(signal_fg_1 == 1) f2.classList.add(css_spin)
     }
     if(signal_fan_3 == 1){
-        f3.classList.remove("spin")
-        f3.classList.add("bad")
+        f3.classList.remove(css_spin)
+        f3.classList.add(css_bad)
         fans.push(3)
-    }else{
-        f3.classList.remove("bad")
-        if(signal_fan_group == 1) f3.classList.add("spin")
+    }else if(signal_fan_3 == 0){
+        f3.classList.remove(css_bad)
+        if(signal_fg_1 == 1) f3.classList.add(css_spin)
     }
     if(signal_fan_4 == 1){
-        f4.classList.remove("spin")
-        f4.classList.add("bad")
+        f4.classList.remove(css_spin)
+        f4.classList.add(css_bad)
         fans.push(4)
-    }else{
-        f4.classList.remove("bad")
-        if(signal_fan_group == 2) f4.classList.add("spin")
+    }else if(signal_fan_4 == 0){
+        f4.classList.remove(css_bad)
+        if(signal_fg_2 == 1) f4.classList.add(css_spin)
     }
     if(signal_fan_5 == 1){
-        f5.classList.remove("spin")
-        f5.classList.add("bad")
+        f5.classList.remove(css_spin)
+        f5.classList.add(css_bad)
         fans.push(5)
-    }else{
-        f5.classList.remove("bad")
-        if(signal_fan_group == 2) f5.classList.add("spin")
+    }else if(signal_fan_5 == 0){
+        f5.classList.remove(css_bad)
+        if(signal_fg_2 == 1) f5.classList.add(css_spin)
     }
     if(signal_fan_6 == 1){
-        f6.classList.remove("spin")
-        f6.classList.add("bad")
+        f6.classList.remove(css_spin)
+        f6.classList.add(css_bad)
         fans.push(6)
-    }else{
-        f6.classList.remove("bad")
-        if(signal_fan_group == 3) f6.classList.add("spin")
+    }else if(signal_fan_6 == 0){
+        f6.classList.remove(css_bad)
+        if(signal_fg_3 == 1) f6.classList.add(css_spin)
     }
 
     if(signal_fan_1 == 1 || signal_fan_2 == 1 || signal_fan_3 == 1 || signal_fan_4 == 1 || signal_fan_5 == 1 || signal_fan_6 == 1){
-        fans_fail_icon.classList.add("bad")
+        fans_fail_icon.classList.add(css_bad)
         fans_fail_text.innerHTML = "Fan Fail (" + (fans.length == 6 ? "all" : fans.length) + ")"
         if(fans.length == 6){
             fans_fail_count.innerHTML = ""
@@ -136,13 +185,13 @@ function load_alarm_fan_fail(){
             fans_fail_count.innerHTML = "Fan " + fans.join(",")
         }
     }else if(signal_fan_1 == 0 && signal_fan_2 == 0 && signal_fan_3 == 0 && signal_fan_4 == 0 && signal_fan_5 == 0 && signal_fan_6 == 0){
-        fans_fail_icon.classList.remove("bad")
+        fans_fail_icon.classList.remove(css_bad)
         fans_fail_text.innerHTML = "Fan OK (all)"
         fans_fail_count.innerHTML = ""
     }else{
-        fans_fail_icon.classList.remove("bad")
-        fans_fail_text.innerHTML = "-"
-        fans_fail_count.innerHTML = "-"
+        fans_fail_icon.classList.remove(css_bad)
+        fans_fail_text.innerHTML = text_na
+        fans_fail_count.innerHTML = text_na
     }   
 }
 
@@ -153,14 +202,14 @@ function load_alarm_door(){
     const text = document.getElementById("alarm-door-text")
     
     if(signal == 0){
-        icon.className = "bi bi-door-closed inactive"
+        icon.className = "bi bi-door-closed " + css_inactive
         text.innerHTML = "Close"
     }else if(signal == 1){
-        icon.className = "bi bi-door-open-fill bad"
+        icon.className = "bi bi-door-open-fill " + css_bad
         text.innerHTML = "Open"
     }else{
-        icon.className = "bi bi-door-closed inactive"
-        text.innerHTML = "-"
+        icon.className = "bi bi-door-closed "+ css_inactive
+        text.innerHTML = text_na
     }
 }
 
@@ -170,14 +219,14 @@ function load_alarm_smoke(){
     const icon = document.getElementById("alarm-fire-icon")
     const text = document.getElementById("alarm-fire-text")
     if(signal == 0){
-        icon.className = "bi bi-fire inactive"
-        text.innerHTML = alarm_off_text
+        icon.className = "bi bi-fire " + css_inactive
+        text.innerHTML = text_deactive
     }else if(signal == 1){
-        icon.className = "bi bi-fire bad"
-        text.innerHTML = alarm_on_text
+        icon.className = "bi bi-fire " + css_bad
+        text.innerHTML = text_active
     }else{
-        icon.className = "bi bi-fire inactive"
-        text.innerHTML = "-"
+        icon.className = "bi bi-fire " + css_inactive
+        text.innerHTML = text_na
     }
 }
 
@@ -187,14 +236,14 @@ function load_alarm_hrt(){
     const icon = document.getElementById("alarm-hrt-icon")
     const text = document.getElementById("alarm-hrt-text")
     if(signal == 0){
-        icon.className = "bi bi-heart-pulse inactive"
-        text.innerHTML = alarm_off_text
+        icon.className = "bi bi-heart-pulse " + css_inactive
+        text.innerHTML = text_deactive
     }else if(signal == 1){
-        icon.className = "bi bi-heart-pulse bad"
-        text.innerHTML = alarm_on_text
+        icon.className = "bi bi-heart-pulse " + css_bad
+        text.innerHTML = text_active
     }else{
-        icon.className = "bi bi-heart-pulse inactive"
-        text.innerHTML = "-"
+        icon.className = "bi bi-heart-pulse " + css_inactive
+        text.innerHTML = text_na
     }
 }
 
@@ -204,14 +253,14 @@ function load_alarm_water_leakage(){
     const icon = document.getElementById("alarm-water-leakage-icon")
     const text = document.getElementById("alarm-water-leakage-text")
     if(signal == 0){
-        icon.className = "bi bi-droplet-half inactive"
-        text.innerHTML = alarm_off_text
+        icon.className = "bi bi-droplet-half " + css_inactive
+        text.innerHTML = text_deactive
     }else if(signal == 1){
-        icon.className = "bi bi-droplet-half bad"
-        text.innerHTML = alarm_on_text
+        icon.className = "bi bi-droplet-half " + css_bad
+        text.innerHTML = text_active
     }else{
-        icon.className = "bi bi-droplet-half inactive"
-        text.innerHTML = "-"
+        icon.className = "bi bi-droplet-half " + css_inactive
+        text.innerHTML = text_na
     }         
 }
 
@@ -221,14 +270,14 @@ function load_alarm_water_logging(){
     const icon = document.getElementById("alarm-water-logging-icon")
     const text = document.getElementById("alarm-water-logging-text")
     if(signal == 0){
-        icon.className = "bi bi-water inactive"
-        text.innerHTML = alarm_off_text
+        icon.className = "bi bi-water " + css_inactive
+        text.innerHTML = text_deactive
     }else if(signal == 1){
-        icon.className = "bi bi-water bad"
-        text.innerHTML = alarm_on_text
+        icon.className = "bi bi-water " + css_bad
+        text.innerHTML = text_active
     }else{
-        icon.className = "bi bi-water inactive"
-        text.innerHTML = "-"
+        icon.className = "bi bi-water " + css_inactive
+        text.innerHTML = text_na
     }
 }
 
@@ -238,14 +287,14 @@ function load_alarm_system_low_voltage(){
     const icon = document.getElementById("alarm-low-voltage-icon")
     const text = document.getElementById("alarm-low-voltage-text")
     if(signal == 0){
-        icon.className = "bi bi-lightning-fill inactive"
-        text.innerHTML = alarm_off_text
+        icon.className = "bi bi-lightning-fill " + css_inactive
+        text.innerHTML = text_deactive
     }else if(signal == 1){   
-        icon.className = "bi bi-lightning-fill bad"
-        text.innerHTML = alarm_on_text
+        icon.className = "bi bi-lightning-fill " + css_bad
+        text.innerHTML = text_active
     }else{
-        icon.className = "bi bi-lightning-fill inactive"
-        text.innerHTML = "-"  
+        icon.className = "bi bi-lightning-fill " + css_inactive
+        text.innerHTML = text_na  
     }
 }
 
@@ -255,11 +304,11 @@ function load_measurement_system_voltage(){
     const icon = document.getElementById("meaure-voltage-icon")
     const text = document.getElementById("meaure-voltage-text")
     if(signal < 46){
-        icon.className = "bi bi-battery-half bad"
+        icon.className = "bi bi-battery-half " + css_bad
     }else if(signal >= 46){
-        icon.className = "bi bi-battery-full good"
+        icon.className = "bi bi-battery-full "  + css_good
     }else{
-        icon.className = "bi bi-battery inactive"
+        icon.className = "bi bi-battery " + css_inactive
     }
     text.innerHTML = measureValue(signal)
 }
@@ -270,13 +319,13 @@ function load_measurement_cabin_temperature(){
     const icon = document.getElementById("measure-cabin-temp-icon")
     const text = document.getElementById("measure-cabin-temp-text")
     if(signal >= -50 && signal <= 25){
-        icon.className = "bi bi-thermometer-low good"
+        icon.className = "bi bi-thermometer-low "  + css_good
     }else if(signal > 25 && signal <= 35){
-        icon.className = "bi bi-thermometer-half average"
+        icon.className = "bi bi-thermometer-half " + css_average
     }else if(signal > 35){
-        icon.className = "bi bi-thermometer-high bad"
+        icon.className = "bi bi-thermometer-high " + css_bad
     }else{
-        icon.className = "bi bi-thermometer inactive"
+        icon.className = "bi bi-thermometer " + css_inactive
     }
     text.innerHTML = measureValue(signal)
 }
@@ -289,7 +338,7 @@ function load_measurement_cabin_humidity(){
     if(signal >= -100){
         icon.className = "bi bi-moisture humid"
     }else{
-        icon.className = "bi bi-moisture inactive"
+        icon.className = "bi bi-moisture " + css_inactive
     }
     text.innerHTML = measureValue(signal)
 }
@@ -302,11 +351,11 @@ function load_measurement_env_temperature(){
     if(signal <= 25){
         icon.className = "bi bi-thermometer-low good"
     }else if(signal > 25 && signal <= 35){
-        icon.className = "bi bi-thermometer-half average"
+        icon.className = "bi bi-thermometer-half " + css_average
     }else if(signal > 35){
-        icon.className = "bi bi-thermometer-high bad"
+        icon.className = "bi bi-thermometer-high " + css_bad
     }else{
-        icon.className = "bi bi-thermometer inactive"
+        icon.className = "bi bi-thermometer " + css_inactive
     }
     text.innerHTML = measureValue(signal)
 }
@@ -316,7 +365,7 @@ function hasValue(alarm){
 }
 
 function measureValue(measure){
-    return isNaN(measure) ? "-" : measure
+    return isNaN(measure) ? text_na : measure
 }
 
 function load_status_all(){
@@ -346,15 +395,14 @@ var init = function(){
     load_measurements_all()
 }()
 
-
 //testing
-function ToggleAlarm(alarmName, value){
-    document.getElementById(alarmName).value = value.target.checked ? 1: 0
+function ToggleAlarm(alarmName, event){
+    document.getElementById(alarmName).value = event.target.checked ? 1: 0
     load_alarms_all()
 }
 
-function ToggleFanGroup(fanGroup){
-    document.getElementById("signal_status_fan_group").value = fanGroup
+function ToggleFanGroup(fanGroup, event){
+    document.getElementById("signal_status_fan_group_" + fanGroup).value = event.target.checked ? 1: 0
     load_status_all()
 }
 

@@ -180,19 +180,22 @@
                     <div class="row">
                         <div class="col-12" >
                             <div class="pack">
-                                <div class="pack-title">Fan Group 1</div>
+                                <div class="pack-title d-flex justify-content-between">
+                                    <div>Fan Group 1</div>
+                                    <div id="status_fan_group_1" style="font-size: 1rem;">-</div>
+                                </div>
                                 <div class="pack-body pb-0">
                                     <div class="d-flex flex-wrap justify-content-evenly gap-4">
                                         <div>
-                                            <i id="fan-1" class="bi bi-fan fan inactive"></i>
+                                            <i id="fan_1" class="bi bi-fan fan inactive"></i>
                                             <div>Fan 1</div>
                                         </div>
                                         <div>
-                                            <i id="fan-2" class="bi bi-fan fan inactive"></i>
+                                            <i id="fan_2" class="bi bi-fan fan inactive"></i>
                                             <div>Fan 2</div>
                                         </div>
                                         <div>
-                                            <i id="fan-3" class="bi bi-fan fan inactive"></i>
+                                            <i id="fan_3" class="bi bi-fan fan inactive"></i>
                                             <div>Fan 3</div>
                                         </div>
                                     </div>
@@ -201,15 +204,18 @@
                         </div>
                         <div class="col-12" >
                             <div class="pack">
-                                <div class="pack-title">Fan Group 2</div>
+                                <div class="pack-title d-flex justify-content-between">
+                                    <div>Fan Group 2</div>
+                                    <div id="status_fan_group_2" style="font-size: 1rem;">-</div>
+                                </div>
                                 <div class="pack-body pb-0">
                                     <div class="d-flex flex-wrap justify-content-evenly gap-4">
                                         <div>
-                                            <i id="fan-4" class="bi bi-fan fan inactive"></i>
+                                            <i id="fan_4" class="bi bi-fan fan inactive"></i>
                                             <div>Fan 4</div>
                                         </div>
                                         <div>
-                                            <i id="fan-5" class="bi bi-fan fan inactive"></i>
+                                            <i id="fan_5" class="bi bi-fan fan inactive"></i>
                                             <div>Fan 5</div>
                                         </div>
                                     </div>
@@ -218,11 +224,14 @@
                         </div>
                         <div class="col-12" >
                             <div class="pack">
-                                <div class="pack-title">Fan Group 3</div>
+                                <div class="pack-title d-flex justify-content-between">
+                                    <div>Fan Group 3</div>
+                                    <div id="status_fan_group_3" style="font-size: 1rem;">-</div>
+                                </div>
                                 <div class="pack-body pb-0">
                                     <div class="d-flex flex-wrap justify-content-evenly gap-4">
                                         <div>
-                                            <i id="fan-6" class="bi bi-fan fan inactive"></i>
+                                            <i id="fan_6" class="bi bi-fan fan inactive"></i>
                                             <div>Fan 6</div>
                                         </div>
                                     </div>
@@ -234,7 +243,9 @@
             </div>
         </div>
         <div>
-            <!-- <input type="hidden" id="signal_status_fan_group" value="~signal_status_fan_group~" />
+            <!-- <input type="hidden" id="signal_status_fan_group_1" value="~signal_status_fan_group_1~" />
+            <input type="hidden" id="signal_status_fan_group_2" value="~signal_status_fan_group_2~" />
+            <input type="hidden" id="signal_status_fan_group_3" value="~signal_status_fan_group_3~" />
             <input type="hidden" id="signal_alarm_door" value="~signal_alarm_door~" />
             <input type="hidden" id="signal_alarm_hrt" value="~signal_alarm_hrt~" />
             <input type="hidden" id="signal_alarm_smoke" value="~signal_alarm_smoke~" />
@@ -254,7 +265,9 @@
         </div>
         <!-- Testing -->
         <div>
-            <input type="hidden" id="signal_status_fan_group" value="" />
+            <input type="hidden" id="signal_status_fan_group_1" value="" />
+            <input type="hidden" id="signal_status_fan_group_2" value="" />
+            <input type="hidden" id="signal_status_fan_group_3" value="" />
             <input type="hidden" id="signal_alarm_door" value="" />
             <input type="hidden" id="signal_alarm_hrt" value="" />
             <input type="hidden" id="signal_alarm_smoke" value="" />
@@ -371,20 +384,20 @@
                                 <div class="row">
                                     <div class="col md-4">
                                         <div class="form-check">
-                                            <input type="radio" class="form-check-input" id="radioFG1" name="optradioFG" onchange="ToggleFanGroup(1)">
-                                            <label class="form-check-label" for="radioFG1">Fan Group 1</label>
+                                            <input type="checkbox" class="form-check-input" id="chkFG1" onchange="ToggleFanGroup(1, event)">
+                                            <label class="form-check-label" for="chkFG1">Fan Group 1</label>
                                         </div>
                                     </div>
                                     <div class="col md-4">
                                         <div class="form-check">
-                                            <input type="radio" class="form-check-input" id="radioFG2" name="optradioFG" onchange="ToggleFanGroup(2)">
-                                            <label class="form-check-label" for="radioFG2">Fan Group 2</label>
+                                            <input type="checkbox" class="form-check-input" id="chkFG2" onchange="ToggleFanGroup(2, event)">
+                                            <label class="form-check-label" for="chkFG2">Fan Group 2</label>
                                         </div>
                                     </div>
                                     <div class="col md-4">
                                         <div class="form-check">
-                                            <input type="radio" class="form-check-input" id="radioFG3" name="optradioFG" onchange="ToggleFanGroup(3)">
-                                            <label class="form-check-label" for="radioFG3">Fan Group 3</label>
+                                            <input type="checkbox" class="form-check-input" id="chkFG3" onchange="ToggleFanGroup(3, event)">
+                                            <label class="form-check-label" for="chkFG3">Fan Group 3</label>
                                         </div>
                                     </div>
                                 </div> 
