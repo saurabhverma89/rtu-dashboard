@@ -394,19 +394,3 @@ var init = function(){
     load_alarms_all()
     load_measurements_all()
 }()
-
-//testing
-function ToggleAlarm(alarmName, event){
-    document.getElementById(alarmName).value = event.target.checked ? 1: 0
-    load_alarms_all()
-}
-
-function ToggleFanGroup(fanGroup, event){
-    document.getElementById("signal_status_fan_group_" + fanGroup).value = event.target.checked ? 1: 0
-    load_status_all()
-}
-
-function SetMeasurement(measurementName, value){
-    document.getElementById(measurementName).value = value.target.value
-    load_measurements_all()
-}

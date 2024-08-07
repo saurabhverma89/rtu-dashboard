@@ -21,14 +21,14 @@
         <![endif]-->
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
             <div class="container-fluid">
-                <a class="navbar-brand" href="javascript:void(0)">Dashboard</a>
+                <a class="navbar-brand" href="javascript:void(0)">Gateway</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                   <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="mynavbar">
                   <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                      <a class="nav-link" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#testModal">Test</a>
+                      <a class="nav-link" href="index.html"><i class="bi bi-speedometer"></i> Dashboard</a>
                     </li>
                   </ul>
                 </div>
@@ -243,7 +243,7 @@
             </div>
         </div>
         <div>
-            <!-- <input type="hidden" id="signal_status_fan_group_1" value="~signal_status_fan_group_1~" />
+            <input type="hidden" id="signal_status_fan_group_1" value="~signal_status_fan_group_1~" />
             <input type="hidden" id="signal_status_fan_group_2" value="~signal_status_fan_group_2~" />
             <input type="hidden" id="signal_status_fan_group_3" value="~signal_status_fan_group_3~" />
             <input type="hidden" id="signal_alarm_door" value="~signal_alarm_door~" />
@@ -252,7 +252,7 @@
             <input type="hidden" id="signal_alarm_water_leakage" value="~signal_alarm_water_leakage~" />
             <input type="hidden" id="signal_alarm_water_logging" value="~signal_alarm_water_logging~" />
             <input type="hidden" id="signal_alarm_system_low_voltage" value="~signal_alarm_system_low_voltage~" />
-            <input type="hidden" id="signal_alarm_fan_1" value="" />
+            <input type="hidden" id="signal_alarm_fan_1" value="~signal_alarm_fan_1~" />
             <input type="hidden" id="signal_alarm_fan_2" value="~signal_alarm_fan_2~" />
             <input type="hidden" id="signal_alarm_fan_3" value="~signal_alarm_fan_3~" />
             <input type="hidden" id="signal_alarm_fan_4" value="~signal_alarm_fan_4~" />
@@ -261,191 +261,9 @@
             <input type="hidden" id="signal_measure_cabin_temp" value="~signal_measure_cabin_temp~" />
             <input type="hidden" id="signal_measure_cabin_humid" value="~signal_measure_cabin_humid~" />
             <input type="hidden" id="signal_measure_env_temp" value="~signal_measure_env_temp~" />
-            <input type="hidden" id="signal_measure_system_voltage" value="~signal_measure_system_voltage~" /> -->
+            <input type="hidden" id="signal_measure_system_voltage" value="~signal_measure_system_voltage~" />
         </div>
-        <!-- Testing -->
-        <div>
-            <input type="hidden" id="signal_status_fan_group_1" value="" />
-            <input type="hidden" id="signal_status_fan_group_2" value="" />
-            <input type="hidden" id="signal_status_fan_group_3" value="" />
-            <input type="hidden" id="signal_alarm_door" value="" />
-            <input type="hidden" id="signal_alarm_hrt" value="" />
-            <input type="hidden" id="signal_alarm_smoke" value="" />
-            <input type="hidden" id="signal_alarm_water_leakage" value="" />
-            <input type="hidden" id="signal_alarm_water_logging" value="" />
-            <input type="hidden" id="signal_alarm_system_low_voltage" value="" />
-            <input type="hidden" id="signal_alarm_fan_1" value="" />
-            <input type="hidden" id="signal_alarm_fan_2" value="" />
-            <input type="hidden" id="signal_alarm_fan_3" value="" />
-            <input type="hidden" id="signal_alarm_fan_4" value="" />
-            <input type="hidden" id="signal_alarm_fan_5" value="" />
-            <input type="hidden" id="signal_alarm_fan_6" value="" />
-            <input type="hidden" id="signal_measure_cabin_temp" value="" />
-            <input type="hidden" id="signal_measure_cabin_humid" value="" />
-            <input type="hidden" id="signal_measure_env_temp" value="" />
-            <input type="hidden" id="signal_measure_system_voltage" value="" />
-
-            <!-- The Modal -->
-            <div class="modal" id="testModal" >
-                <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-            
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                    <h4 class="modal-title">Test</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-            
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                        <div class="card">
-                            <div class="card-header">Alarms</div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-4 col-sm-6">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="chkAlarmDoor" onchange="ToggleAlarm('signal_alarm_door', event)">
-                                            <label class="form-check-label" for="chkAlarmDoor">Door</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-4 col-sm-6">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="chkAlarmHrt" onchange="ToggleAlarm('signal_alarm_hrt', event)">
-                                            <label class="form-check-label" for="chkAlarmHrt">HRT</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-4 col-sm-6">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="chkAlarmSmoke" onchange="ToggleAlarm('signal_alarm_smoke', event)">
-                                            <label class="form-check-label" for="chkAlarmSmoke">Fire/Smoke</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-4 col-sm-6">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="chkAlarmWaterLeakage" onchange="ToggleAlarm('signal_alarm_water_leakage', event)">
-                                            <label class="form-check-label" for="chkAlarmWaterLeakage">Water Leakage</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-4 col-sm-6">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="chkAlarmWaterLogging" onchange="ToggleAlarm('signal_alarm_water_logging', event)">
-                                            <label class="form-check-label" for="chkAlarmWaterLogging">Water Logging</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-4 col-sm-6">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="chkAlarmSysLowVoltage" onchange="ToggleAlarm('signal_alarm_system_low_voltage', event)">
-                                            <label class="form-check-label" for="chkAlarmSysLowVoltage">System Low Voltage</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-4 col-sm-6">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="chkAlarmFan1" onchange="ToggleAlarm('signal_alarm_fan_1', event)">
-                                            <label class="form-check-label" for="chkAlarmFan1">Fan 1</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-4 col-sm-6">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="chkAlarmFan2" onchange="ToggleAlarm('signal_alarm_fan_2', event)">
-                                            <label class="form-check-label" for="chkAlarmFan2">Fan 2</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-4 col-sm-6">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="chkAlarmFan3" onchange="ToggleAlarm('signal_alarm_fan_3', event)">
-                                            <label class="form-check-label" for="chkAlarmFan3">Fan 3</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-4 col-sm-6">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="chkAlarmFan4" onchange="ToggleAlarm('signal_alarm_fan_4', event)">
-                                            <label class="form-check-label" for="chkAlarmFan4">Fan 4</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-4 col-sm-6">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="chkAlarmFan5" onchange="ToggleAlarm('signal_alarm_fan_5', event)">
-                                            <label class="form-check-label" for="chkAlarmFan5">Fan 5</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-4 col-sm-6">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="chkAlarmFan6" onchange="ToggleAlarm('signal_alarm_fan_6', event)">
-                                            <label class="form-check-label" for="chkAlarmFan6">Fan 6</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card mt-2">
-                            <div class="card-header">Status</div>
-                            <div class="card-body">
-                                Fan Group
-                                <div class="row">
-                                    <div class="col md-4">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="chkFG1" onchange="ToggleFanGroup(1, event)">
-                                            <label class="form-check-label" for="chkFG1">Fan Group 1</label>
-                                        </div>
-                                    </div>
-                                    <div class="col md-4">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="chkFG2" onchange="ToggleFanGroup(2, event)">
-                                            <label class="form-check-label" for="chkFG2">Fan Group 2</label>
-                                        </div>
-                                    </div>
-                                    <div class="col md-4">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="chkFG3" onchange="ToggleFanGroup(3, event)">
-                                            <label class="form-check-label" for="chkFG3">Fan Group 3</label>
-                                        </div>
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                        <div class="card mt-2">
-                            <div class="card-header">Measurements</div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-6">
-                                        <div>
-                                            <label for="cabinTemp" class="form-label">Cabin Temperature</label>
-                                            <input type="number" class="form-control" id="cabinTemp" onchange="SetMeasurement('signal_measure_cabin_temp', event)">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6">
-                                        <div>
-                                            <label for="cabinHumid" class="form-label">Cabin Humidity</label>
-                                            <input type="number" class="form-control" id="cabinHumid" onchange="SetMeasurement('signal_measure_cabin_humid', event)">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6">
-                                        <div>
-                                            <label for="envTemp" class="form-label">Env. Temperature</label>
-                                            <input type="number" class="form-control" id="envTemp" onchange="SetMeasurement('signal_measure_env_temp', event)">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6">
-                                        <div>
-                                            <label for="cabinSysVolt" class="form-label">System Voltage</label>
-                                            <input type="number" class="form-control" id="cabinSysVolt" onchange="SetMeasurement('signal_measure_system_voltage', event)">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>  
-                        </div>  
-                    </div>
-            
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    </div>
-            
-                </div>
-                </div>
-            </div>
-            
-        </div>
+        
         <script src="scripts/bootstrap.bundle.min.js" async defer></script>
         <script src="scripts/script.js" async defer></script>
     </body>
