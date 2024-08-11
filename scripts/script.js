@@ -390,8 +390,17 @@ function load_measurements_all(){
     load_measurement_system_voltage()
 }
 
-var init = function(){
+function showLastUpdateDatetime(){
+    const dateFormatter = new Intl.DateTimeFormat('hi-IN', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    const timeFormatter = new Intl.DateTimeFormat('hi-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    const date = new Date()
+    document.getElementById("lastUpdateDatetime").innerHTML = `${dateFormatter.format(date)} ${timeFormatter.format(date)}`
+    lastUpdateDateTime = date
+}
+
+const init = function(){
     load_status_all()
     load_alarms_all()
     load_measurements_all()
+    showLastUpdateDatetime()   
 }()

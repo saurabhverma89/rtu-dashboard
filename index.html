@@ -8,6 +8,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="refresh" content="5">
         <title>Gateway</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,16 +27,25 @@
                   <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="mynavbar">
-                  <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                      <a class="nav-link" href="index.html"><i class="bi bi-speedometer"></i> Dashboard</a>
-                    </li>
-                  </ul>
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html"><i class="bi bi-speedometer"></i> Dashboard</a>
+                        </li>
+                    </ul>  
                 </div>
-              </div>
+            </div>
         </nav>
        
         <div class="container-fluid main-page">
+            <div class="row">
+                <div class="col mb-2">
+                    <div class="d-flex gap-1 justify-content-end">
+                        <div class="text-muted text-end small">
+                            Last updated <span id="lastUpdateDatetime">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-xl-8">
                     <div class="row">
