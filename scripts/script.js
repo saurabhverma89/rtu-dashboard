@@ -395,7 +395,6 @@ function showLastUpdateDatetime(){
     const timeFormatter = new Intl.DateTimeFormat('hi-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
     const date = new Date()
     document.getElementById("lastUpdateDatetime").innerHTML = `${dateFormatter.format(date)} ${timeFormatter.format(date)}`
-    lastUpdateDateTime = date
 }
 
 const init = function(){
