@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<measurements>
+    <measurement name="cabinet-temp"></measurement>
+    <measurement name="cabinet-humidity"></measurement>
+    <measurement name="env-temp"></measurement>
+    <measurement name="system-voltage"></measurement>
+</measurements>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alarms>
+    <alarm name="door-open"></alarm>
+    <alarm name="hrt"></alarm>
+    <alarm name="smoke"></alarm>
+    <alarm name="water-leakage"></alarm>
+    <alarm name="water-logging"></alarm>
+    <alarm name="fan1-fail"></alarm>
+    <alarm name="fan2-fail"></alarm>
+    <alarm name="fan3-fail"></alarm>
+    <alarm name="fan4-fail"></alarm>
+    <alarm name="fan5-fail"></alarm>
+    <alarm name="fan6-fail"></alarm>
+    <alarm name="system-low-voltage"></alarm>
+    <alarm name="group1-fan-status"></alarm>
+    <alarm name="group2-fan-status"></alarm>
+    <alarm name="group3-fan-status"></alarm>
+</alarms>

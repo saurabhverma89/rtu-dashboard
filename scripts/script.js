@@ -9,15 +9,15 @@ const css_spin = "spin"
 const css_good = "good"
 const css_average = "average"
 
-const id_signal_status_fan_group_1 = "signal_status_fan_group_1"
-const id_signal_status_fan_group_2 = "signal_status_fan_group_2"
-const id_signal_status_fan_group_3 = "signal_status_fan_group_3"
-const id_signal_alarm_fan_1 = "signal_alarm_fan_1"
-const id_signal_alarm_fan_2 = "signal_alarm_fan_2"
-const id_signal_alarm_fan_3 = "signal_alarm_fan_3"
-const id_signal_alarm_fan_4 = "signal_alarm_fan_4"
-const id_signal_alarm_fan_5 = "signal_alarm_fan_5"
-const id_signal_alarm_fan_6 = "signal_alarm_fan_6"
+const id_signal_status_fan_group_1 = "group1-fan-status"
+const id_signal_status_fan_group_2 = "group2-fan-status"
+const id_signal_status_fan_group_3 = "group3-fan-status"
+const id_signal_alarm_fan_1 = "fan1-fail"
+const id_signal_alarm_fan_2 = "fan2-fail"
+const id_signal_alarm_fan_3 = "fan3-fail"
+const id_signal_alarm_fan_4 = "fan4-fail"
+const id_signal_alarm_fan_5 = "fan5-fail"
+const id_signal_alarm_fan_6 = "fan6-fail"
 const id_fan_1 = "fan_1"
 const id_fan_2 = "fan_2"
 const id_fan_3 = "fan_3"
@@ -25,16 +25,16 @@ const id_fan_4 = "fan_4"
 const id_fan_5 = "fan_5"
 const id_fan_6 = "fan_6"
 
-function load_status_fanGroup(){
-    const signal_fg_1 = parseInt(document.getElementById(id_signal_status_fan_group_1).value)
-    const signal_fg_2 = parseInt(document.getElementById(id_signal_status_fan_group_2).value)
-    const signal_fg_3 = parseInt(document.getElementById(id_signal_status_fan_group_3).value)
-    const signal_fan_1 = parseInt(document.getElementById(id_signal_alarm_fan_1).value)
-    const signal_fan_2 = parseInt(document.getElementById(id_signal_alarm_fan_2).value)
-    const signal_fan_3 = parseInt(document.getElementById(id_signal_alarm_fan_3).value)
-    const signal_fan_4 = parseInt(document.getElementById(id_signal_alarm_fan_4).value)
-    const signal_fan_5 = parseInt(document.getElementById(id_signal_alarm_fan_5).value)
-    const signal_fan_6 = parseInt(document.getElementById(id_signal_alarm_fan_6).value)
+function load_fan_gourp_status(xmlData){
+    const signal_fg_1 = getAlarmValueFromXML(xmlData, id_signal_status_fan_group_1)
+    const signal_fg_2 = getAlarmValueFromXML(xmlData, id_signal_status_fan_group_2)
+    const signal_fg_3 = getAlarmValueFromXML(xmlData, id_signal_status_fan_group_3)
+    const signal_fan_1 = getAlarmValueFromXML(xmlData, id_signal_alarm_fan_1)
+    const signal_fan_2 = getAlarmValueFromXML(xmlData, id_signal_alarm_fan_2)
+    const signal_fan_3 = getAlarmValueFromXML(xmlData, id_signal_alarm_fan_3)
+    const signal_fan_4 = getAlarmValueFromXML(xmlData, id_signal_alarm_fan_4)
+    const signal_fan_5 = getAlarmValueFromXML(xmlData, id_signal_alarm_fan_5)
+    const signal_fan_6 = getAlarmValueFromXML(xmlData, id_signal_alarm_fan_6)
 
     const f1 = document.getElementById(id_fan_1);
     const f2 = document.getElementById(id_fan_2);
@@ -105,17 +105,17 @@ function load_status_fanGroup(){
     }
 }
 
-function load_alarm_fan_fail(){
-    const signal_fan_1 = parseInt(document.getElementById(id_signal_alarm_fan_1).value)
-    const signal_fan_2 = parseInt(document.getElementById(id_signal_alarm_fan_2).value)
-    const signal_fan_3 = parseInt(document.getElementById(id_signal_alarm_fan_3).value)
-    const signal_fan_4 = parseInt(document.getElementById(id_signal_alarm_fan_4).value)
-    const signal_fan_5 = parseInt(document.getElementById(id_signal_alarm_fan_5).value)
-    const signal_fan_6 = parseInt(document.getElementById(id_signal_alarm_fan_6).value)
+function load_alarm_fan_fail(xmlData){
+    const signal_fan_1 = getAlarmValueFromXML(xmlData, id_signal_alarm_fan_1)
+    const signal_fan_2 = getAlarmValueFromXML(xmlData, id_signal_alarm_fan_2)
+    const signal_fan_3 = getAlarmValueFromXML(xmlData, id_signal_alarm_fan_3)
+    const signal_fan_4 = getAlarmValueFromXML(xmlData, id_signal_alarm_fan_4)
+    const signal_fan_5 = getAlarmValueFromXML(xmlData, id_signal_alarm_fan_5)
+    const signal_fan_6 = getAlarmValueFromXML(xmlData, id_signal_alarm_fan_6)
 
-    const signal_fg_1 = parseInt(document.getElementById(id_signal_status_fan_group_1).value)
-    const signal_fg_2 = parseInt(document.getElementById(id_signal_status_fan_group_2).value)
-    const signal_fg_3 = parseInt(document.getElementById(id_signal_status_fan_group_3).value)
+    const signal_fg_1 = getAlarmValueFromXML(xmlData, id_signal_status_fan_group_1)
+    const signal_fg_2 = getAlarmValueFromXML(xmlData, id_signal_status_fan_group_2)
+    const signal_fg_3 = getAlarmValueFromXML(xmlData, id_signal_status_fan_group_3)
     
     const f1 = document.getElementById(id_fan_1)
     const f2 = document.getElementById(id_fan_2)
@@ -196,9 +196,9 @@ function load_alarm_fan_fail(){
     }   
 }
 
-function load_alarm_door(){
-    const signal = parseInt(document.getElementById("signal_alarm_door").value)
-    
+function load_alarm_door(xmlData){
+    const signal = getAlarmValueFromXML(xmlData, "door-open")
+    console.log("door-open", signal)
     const icon = document.getElementById("alarm-door-icon")
     const text = document.getElementById("alarm-door-text")
     
@@ -214,8 +214,8 @@ function load_alarm_door(){
     }
 }
 
-function load_alarm_smoke(){
-    const signal = parseInt(document.getElementById("signal_alarm_smoke").value)
+function load_alarm_smoke(xmlData){
+    const signal = getAlarmValueFromXML(xmlData, "smoke")
 
     const icon = document.getElementById("alarm-fire-icon")
     const text = document.getElementById("alarm-fire-text")
@@ -231,8 +231,8 @@ function load_alarm_smoke(){
     }
 }
 
-function load_alarm_hrt(){
-    const signal = parseInt(document.getElementById("signal_alarm_hrt").value)
+function load_alarm_hrt(xmlData){
+    const signal = getAlarmValueFromXML(xmlData, "hrt")
 
     const icon = document.getElementById("alarm-hrt-icon")
     const text = document.getElementById("alarm-hrt-text")
@@ -248,8 +248,8 @@ function load_alarm_hrt(){
     }
 }
 
-function load_alarm_water_leakage(){
-    const signal = parseInt(document.getElementById("signal_alarm_water_leakage").value)
+function load_alarm_water_leakage(xmlData){
+    const signal = getAlarmValueFromXML(xmlData, "water-leakage")
 
     const icon = document.getElementById("alarm-water-leakage-icon")
     const text = document.getElementById("alarm-water-leakage-text")
@@ -265,8 +265,8 @@ function load_alarm_water_leakage(){
     }         
 }
 
-function load_alarm_water_logging(){
-    const signal = parseInt(document.getElementById("signal_alarm_water_logging").value)
+function load_alarm_water_logging(xmlData){
+    const signal = getAlarmValueFromXML(xmlData, "water-logging")
 
     const icon = document.getElementById("alarm-water-logging-icon")
     const text = document.getElementById("alarm-water-logging-text")
@@ -282,8 +282,8 @@ function load_alarm_water_logging(){
     }
 }
 
-function load_alarm_system_low_voltage(){
-    const signal = parseInt(document.getElementById("signal_alarm_system_low_voltage").value)
+function load_alarm_system_low_voltage(xmlData){
+    const signal = getAlarmValueFromXML(xmlData, "system-low-voltage")
 
     const icon = document.getElementById("alarm-low-voltage-icon")
     const text = document.getElementById("alarm-low-voltage-text")
@@ -299,8 +299,8 @@ function load_alarm_system_low_voltage(){
     }
 }
 
-function load_measurement_system_voltage(){
-    const signal = parseInt(document.getElementById("signal_measure_system_voltage").value)
+function load_measurement_system_voltage(xmlData){
+    const signal = getMeasurementValueFromXML(xmlData, "system-voltage")
 
     const icon = document.getElementById("meaure-voltage-icon")
     const text = document.getElementById("meaure-voltage-text")
@@ -314,8 +314,8 @@ function load_measurement_system_voltage(){
     text.innerHTML = measureValue(signal)
 }
 
-function load_measurement_cabin_temperature(){
-    const signal = parseInt(document.getElementById("signal_measure_cabin_temp").value)
+function load_measurement_cabin_temperature(xmlData){
+    const signal = getMeasurementValueFromXML(xmlData, "cabinet-temp")
     
     const icon = document.getElementById("measure-cabin-temp-icon")
     const text = document.getElementById("measure-cabin-temp-text")
@@ -331,8 +331,8 @@ function load_measurement_cabin_temperature(){
     text.innerHTML = measureValue(signal)
 }
 
-function load_measurement_cabin_humidity(){
-    const signal = parseInt(document.getElementById("signal_measure_cabin_humid").value)
+function load_measurement_cabin_humidity(xmlData){
+    const signal = getMeasurementValueFromXML(xmlData, "cabinet-humidity")
 
     const icon = document.getElementById("measure-cabin-humid-icon")
     const text = document.getElementById("measure-cabin-humid-text")
@@ -344,8 +344,8 @@ function load_measurement_cabin_humidity(){
     text.innerHTML = measureValue(signal)
 }
 
-function load_measurement_env_temperature(){
-    const signal = parseInt(document.getElementById("signal_measure_env_temp").value)
+function load_measurement_env_temperature(xmlData){
+    const signal = getMeasurementValueFromXML(xmlData, "env-temp")
 
     const icon = document.getElementById("measure-env-temp-icon")
     const text = document.getElementById("measure-env-temp-text")
@@ -373,21 +373,52 @@ function load_status_all(){
     load_status_fanGroup()
 }
 
+function getAlarmValueFromXML(xmlData, alarmName){
+    var alarms = xmlData.getElementsByTagName("alarm")
+    const signal = [...alarms].filter(x=>x.getAttribute("name") == alarmName)[0].innerHTML
+    return parseInt(signal)
+}
+
+function getMeasurementValueFromXML(xmlData, measurementName){
+    var measurements = xmlData.getElementsByTagName("measurement")
+    const signal = [...measurements].filter(x=>x.getAttribute("name") == measurementName)[0].innerHTML
+    return parseInt(signal)
+}
+
 function load_alarms_all(){
-    load_alarm_fan_fail()
-    load_alarm_door()
-    load_alarm_hrt()
-    load_alarm_smoke()
-    load_alarm_water_leakage()
-    load_alarm_water_logging()
-    load_alarm_system_low_voltage()
+    fetch(alarm_file)
+    .then(res => {
+        if(res.ok){
+            return res.text()
+        }
+    })
+    .then(str => new DOMParser().parseFromString(str, "application/xml"))
+    .then(xmlData => {
+        load_alarm_fan_fail(xmlData)
+        load_alarm_door(xmlData)
+        load_alarm_hrt(xmlData)
+        load_alarm_smoke(xmlData)
+        load_alarm_water_leakage(xmlData)
+        load_alarm_water_logging(xmlData)
+        load_alarm_system_low_voltage(xmlData)
+        load_fan_gourp_status(xmlData)
+    })   
 }
 
 function load_measurements_all(){
-    load_measurement_cabin_temperature()
-    load_measurement_cabin_humidity()
-    load_measurement_env_temperature()
-    load_measurement_system_voltage()
+    fetch(measurements_file)
+    .then(res => {
+        if(res.ok){
+            return res.text()
+        }
+    })
+    .then(str => new DOMParser().parseFromString(str, "application/xml"))
+    .then(xmlData => {
+        load_measurement_cabin_temperature(xmlData)
+        load_measurement_cabin_humidity(xmlData)
+        load_measurement_env_temperature(xmlData)
+        load_measurement_system_voltage(xmlData)
+    })   
 }
 
 function showLastUpdateDatetime(){
@@ -397,9 +428,38 @@ function showLastUpdateDatetime(){
     document.getElementById("lastUpdateDatetime").innerHTML = `${dateFormatter.format(date)} ${timeFormatter.format(date)}`
 }
 
-const init = function(){
-    load_status_all()
+const data_path = "data"
+const alarm_file = data_path + "//" + "alarms.xml"
+const measurements_file = data_path + "//" + "measurements.xml"
+
+function loadDashboard(){
     load_alarms_all()
     load_measurements_all()
     showLastUpdateDatetime()   
-}()
+}
+
+var timeoutDashboard;
+function loadTemplate(page){
+    const layout = document.getElementById("layout")
+     fetch(page + ".html")
+        .then(res => {
+            if(res.ok){
+                return res.text()
+            }
+        })
+        .then(template => {
+            layout.removeChild(layout.childNodes[0])
+            const templateDiv = document.createElement("div");
+            templateDiv.innerHTML = template
+            layout.appendChild(templateDiv)
+
+            clearTimeout(timeoutDashboard)
+            switch(page){
+                case "dashboard":
+                    loadDashboard()
+                    timeoutDashboard = setInterval('loadDashboard()', 5000);
+            }
+        })   
+}
+
+loadTemplate('dashboard')
